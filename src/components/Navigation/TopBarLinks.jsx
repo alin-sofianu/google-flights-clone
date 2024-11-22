@@ -6,91 +6,37 @@ import FlightIcon from '@mui/icons-material/Flight';
 import HotelIcon from '@mui/icons-material/Hotel';
 import HouseIcon from '@mui/icons-material/House';
 import LuggageIcon from '@mui/icons-material/Luggage';
-import Typography from '@mui/material/Typography';
+
+const navLinks = [
+  { label: 'Travel', icon: <LuggageIcon sx={{ color: '#0160EF' }} /> },
+  { label: 'Explore', icon: <TravelExploreIcon sx={{ color: '#0160EF' }} /> },
+  { label: 'Flights', icon: <FlightIcon sx={{ color: '#0160EF' }} /> },
+  { label: 'Hotels', icon: <HotelIcon sx={{ color: '#0160EF' }} /> },
+  { label: 'Vacation rentals', icon: <HouseIcon sx={{ color: '#0160EF' }} /> }
+];
 
 export default function TopAppBarLinks() {
   return (
     <Stack spacing={1} direction="row">
-      <Button
-        sx={{
-          borderColor: '#dadce0',
-          borderRadius: '20px',
-          textTransform: 'capitalize',
-          paddingY: '7px',
-          '&:hover': {
-            color: '#174ea6',
-            backgroundColor: '#F6F9FD'
-          },
-        }}
-        variant="outlined"
-        startIcon={<LuggageIcon sx={{ color: '#0160EF' }} />}
-      >
-        Travel
-      </Button>
-      <Button
-        sx={{
-          borderColor: '#dadce0',
-          borderRadius: '20px',
-          textTransform: 'capitalize',
-          paddingY: '7px',
-          '&:hover': {
-            color: '#174ea6',
-            backgroundColor: '#F6F9FD'
-          },
-        }}
-        variant="outlined"
-        startIcon={<TravelExploreIcon sx={{ color: '#0160EF' }} />}
-      >
-        Explore
-      </Button>
-      <Button
-        sx={{
-          borderColor: '#dadce0',
-          borderRadius: '20px',
-          textTransform: 'capitalize',
-          paddingY: '7px',
-          '&:hover': {
-            color: '#174ea6',
-            backgroundColor: '#F6F9FD'
-          },
-        }}
-        variant="outlined"
-        startIcon={<FlightIcon sx={{ color: '#0160EF' }} />}
-      >
-        Flights
-      </Button>
-      <Button
-        sx={{
-          borderColor: '#dadce0',
-          borderRadius: '20px',
-          textTransform: 'capitalize',
-          paddingY: '7px',
-          '&:hover': {
-            color: '#174ea6',
-            backgroundColor: '#F6F9FD'
-          },
-        }}
-        variant="outlined"
-        startIcon={<HotelIcon sx={{ color: '#0160EF' }} />}
-      >
-        Hotels
-      </Button>
-      <Button
-        sx={{
-          borderColor: '#dadce0',
-          borderRadius: '20px',
-          textTransform: 'capitalize',
-          paddingY: '7px',
-          '&:hover': {
-            color: '#174ea6',
-            backgroundColor: '#F6F9FD'
-          },
-        }}
-        variant="outlined"
-        startIcon={<HouseIcon sx={{ color: '#0160EF' }} />}
-      >
-        Vacation rentals
-      </Button>
+      {navLinks.map((link, index) => (
+        <Button
+          key={index}
+          sx={{
+            borderColor: '#dadce0',
+            borderRadius: '20px',
+            textTransform: 'capitalize',
+            paddingY: '7px',
+            '&:hover': {
+              color: '#174ea6',
+              backgroundColor: '#F6F9FD'
+            },
+          }}
+          variant="outlined"
+          startIcon={link.icon}
+        >
+          {link.label}
+        </Button>
+      ))}
     </Stack>
   );
 }

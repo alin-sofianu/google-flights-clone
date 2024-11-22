@@ -14,7 +14,6 @@ export default function Navbar() {
 
   return (
     <div>
-      {/* <Button onClick={toggleDrawer(true)}>Open drawer</Button> */}
       <TopAppBar onButtonClick={toggleDrawer} />
       <SideBar open={open} toggleDrawer={toggleDrawer} />
     </div>
