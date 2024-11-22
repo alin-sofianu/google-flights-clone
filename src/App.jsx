@@ -1,15 +1,25 @@
 import './App.css'
-import { Container } from '@mui/material'
-// import { Typography } from '@mui/material'
-import Navbar from './components/Navigation'
+import Navigation from './components/Navigation'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Flights from './pages/Flights'
+import Explore from './pages/Explore'
+import Hotels from './pages/Hotels'
+import Travel from './pages/Travel'
+import VacationRentals from './pages/VacationRentals'
 
 function App() {
   return (
     <>
-      <Navbar />
-      <Container>
-        {/* <Typography variant="h1" sx={{ color: "primary.main", textAlign: "center" }}>Flights</Typography> */}
-      </Container >
+      <BrowserRouter>
+        <Navigation />
+        <Routes>
+          <Route path="/travel" element={<Travel />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/flights" element={<Flights />} />
+          <Route path="/hotels" element={<Hotels />} />
+          <Route path="/vacation-rentals" element={<VacationRentals />} />
+        </Routes>
+      </BrowserRouter>
     </>
 
   )

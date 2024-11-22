@@ -4,7 +4,7 @@ import TopAppBar from './TopBar'
 import SideBar from './SideBar';
 
 
-export default function Navbar() {
+export default function Navigation() {
   const [open, setOpen] = React.useState(false);
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
