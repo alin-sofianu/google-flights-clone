@@ -1,12 +1,17 @@
 import './App.css'
-import ButtonUsage from './components/ButtonUsage'
+import { Container } from '@mui/material'
+// import { Typography } from '@mui/material'
+import Navbar from './components/Navigation'
+
 function App() {
   return (
     <>
-      <div>
-        <ButtonUsage />
-      </div >
+      <Navbar />
+      <Container>
+        {/* <Typography variant="h1" sx={{ color: "primary.main", textAlign: "center" }}>Flights</Typography> */}
+      </Container >
     </>
+
   )
 }
 

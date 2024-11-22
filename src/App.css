@@ -1,0 +1,9 @@
+* {
+  -webkit-font-smoothing: antialiased; /* Safari and Chrome */
+  -moz-osx-font-smoothing: grayscale; /* Firefox */
+}
+
+.MuiToolbar-root {
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
