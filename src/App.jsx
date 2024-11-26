@@ -19,7 +19,7 @@ function App() {
           <Route path="/hotels" element={<Hotels />} />
           <Route path="/vacation-rentals" element={<VacationRentals />} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter >
     </>
 
   )

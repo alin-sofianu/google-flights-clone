@@ -20,7 +20,7 @@ const CustomDrawer = styled(Drawer)(({ theme }) => ({
 function SideBar({ open, toggleDrawer }) {
 
   const DrawerList = (
-    <Box sx={{ width: 250, mt: 8, zIndex: -5 }} role="presentation" onClick={toggleDrawer(false)}>
+    <Box sx={{ width: 250, zIndex: -5 }} role="presentation" onClick={toggleDrawer(false)}>
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem key={text} disablePadding>
