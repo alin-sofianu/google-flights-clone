@@ -6,9 +6,9 @@ import FlightSearchForm from '../components/FlightSearchForm';
 function Flights() {
   return (
     <>
-      <Container >
+      <Container maxWidth="lg">
         <img src={flightsIcon} height={'auto'} />
-        <Box sx={{ position: "relative" }}>
+        <Box sx={{ position: "relative", mb: 4 }}>
           <Typography variant="h1" sx={{ width: "100%", color: "primary.main", position: 'absolute', top: "-1.2em", textAlign: "center" }}>Flights</Typography>
         </Box>
         <FlightSearchForm />

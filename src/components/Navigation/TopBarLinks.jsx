@@ -35,7 +35,6 @@ export default function TopAppBarLinks() {
                 },
                 outline: isActive ? null : "1px solid #dadce0",
               }}
-              // variant="outlined"
               startIcon={item.icon}
               onClick={() => navigate(item.route)}
             >

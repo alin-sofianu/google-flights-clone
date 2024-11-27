@@ -7,6 +7,9 @@ const theme = createTheme({
     },
     secondary: {
       main: "#ffffff"
+    },
+    btnColor: {
+      main: "#1976d2"
     }
   },
   typography: {
