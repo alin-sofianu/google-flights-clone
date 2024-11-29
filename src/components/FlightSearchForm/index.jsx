@@ -95,7 +95,7 @@ const FlightSearchForm = () => {
             variant="contained"
             sx={{ backgroundColor: 'btnColor.main', position: 'absolute', left: '50%', top: '-2px', transform: 'translateX(-50%)', borderRadius: '20px' }}
             onClick={handleSubmit}
-            disabled={loading}
+            // disabled={loading}
             startIcon={<SearchIcon sx={{ color: 'white' }} />}
           >
             Explore
@@ -103,6 +103,9 @@ const FlightSearchForm = () => {
         </Box>
         {error && <Typography color="error">{error}</Typography>}
       </Paper>
+      <Box sx={{ my: 2 }}>
+        {loading && <Typography variant="h5">Loading...</Typography>}
+      </Box>
       <FlightsResults flights={flights} />
     </div>
   );
