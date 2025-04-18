@@ -1,32 +1,32 @@
 import React, { useState } from "react";
 import { fetchFlightData } from "../../api/index.js";
-import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
-import AdvancedFilters from './AdvancedFilters';
-import { Box, Typography } from '@mui/material';
-import DepartureArrivalLocation from './DepartureArrivalLocation';
-import DepartureArrivalTime from './DepartureArrivalTime';
-import FlightsResults from '../FlightsResults';
-import dayjs from 'dayjs';
-import SearchIcon from '@mui/icons-material/Search';
+import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
+import AdvancedFilters from "./AdvancedFilters";
+import { Box, Typography } from "@mui/material";
+import DepartureArrivalLocation from "./DepartureArrivalLocation";
+import DepartureArrivalTime from "./DepartureArrivalTime";
+import FlightsResults from "../FlightsResults";
+import dayjs from "dayjs";
+import SearchIcon from "@mui/icons-material/Search";
+import Loading from "./Loading.jsx";
 
 const FlightSearchForm = () => {
   const [flights, setFlights] = useState([]);
 
-  const [tripType, setTripType] = useState('round-trip');
-  const [passengerCount, setPassengerCount] = useState('1');
-  const [travelClass, setTravelClass] = useState('economy');
+  const [tripType, setTripType] = useState("round-trip");
+  const [passengerCount, setPassengerCount] = useState("1");
+  const [travelClass, setTravelClass] = useState("economy");
 
   const [departure, setDeparture] = useState({
     originSkyId: "JFK",
     originEntityId: "27537542",
-    destinationName: "New York John F. Kennedy"
+    destinationName: "New York John F. Kennedy",
   });
   const [arrival, setArrival] = useState({
     destinationSkyId: "LHR",
     destinationEntityId: "27544008",
     destinationName: "London, United Kingdom",
-
   });
 
   const [dateRange, setDateRange] = React.useState([null, null]);
@@ -58,12 +58,16 @@ const FlightSearchForm = () => {
     destinationSkyId: arrival.skyId,
     originEntityId: departure.entityId,
     destinationEntityId: arrival.entityId,
-    date: dateRange[0] ? dayjs(dateRange[0]).format('YYYY-MM-DD') : '2024-12-01',
-    returnDate: dateRange[1] ? dayjs(dateRange[1]).format('YYYY-MM-DD') : '2024-12-15',
+    date: dateRange[0]
+      ? dayjs(dateRange[0]).format("YYYY-MM-DD")
+      : "2024-12-01",
+    returnDate: dateRange[1]
+      ? dayjs(dateRange[1]).format("YYYY-MM-DD")
+      : "2024-12-15",
     cabinClass: travelClass,
     adults: parseInt(passengerCount, 10),
-    currency: 'USD',
-    market: 'en-US',
+    currency: "USD",
+    market: "en-US",
     limit: 10,
   };
 
@@ -78,7 +82,7 @@ const FlightSearchForm = () => {
           travelClass={travelClass}
           setTravelClass={setTravelClass}
         />
-        <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
+        <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
           <DepartureArrivalLocation
             departure={departure}
             setDeparture={setDeparture}
@@ -90,22 +94,27 @@ const FlightSearchForm = () => {
             setDateRange={setDateRange}
           />
         </Box>
-        <Box sx={{ mt: 6, position: 'relative' }}>
+        <Box sx={{ mt: 6, position: "relative" }}>
           <Button
             variant="contained"
-            sx={{ backgroundColor: 'btnColor.main', position: 'absolute', left: '50%', top: '-2px', transform: 'translateX(-50%)', borderRadius: '20px' }}
+            sx={{
+              backgroundColor: "btnColor.main",
+              position: "absolute",
+              left: "50%",
+              top: "-2px",
+              transform: "translateX(-50%)",
+              borderRadius: "20px",
+            }}
             onClick={handleSubmit}
             // disabled={loading}
-            startIcon={<SearchIcon sx={{ color: 'white' }} />}
+            startIcon={<SearchIcon sx={{ color: "white" }} />}
           >
             Explore
           </Button>
         </Box>
         {error && <Typography color="error">{error}</Typography>}
       </Paper>
-      <Box sx={{ my: 2 }}>
-        {loading && <Typography variant="h5">Loading...</Typography>}
-      </Box>
+      <Box sx={{ my: 2 }}>{loading && <Loading />}</Box>
       <FlightsResults flights={flights} />
     </div>
   );
