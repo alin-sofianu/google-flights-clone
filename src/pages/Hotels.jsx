@@ -1,12 +1,21 @@
-import React from 'react'
-import { Typography } from '@mui/material'
+import React from "react";
+import { Typography } from "@mui/material";
 
 function Hotels() {
   return (
-    <>
-      <Typography variant="h1" sx={{ color: "primary.main", textAlign: "center" }}>Hotels - Page</Typography>
-    </>
-  )
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "80vh",
+      }}
+    >
+      <Typography variant="h3" sx={{ color: "primary.blue" }}>
+        Hotels - Page
+      </Typography>
+    </div>
+  );
 }
 
-export default Hotels
+export default Hotels;

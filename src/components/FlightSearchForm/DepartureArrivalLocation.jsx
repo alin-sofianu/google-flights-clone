@@ -1,10 +1,15 @@
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
-import { airports } from '../../data/airports';
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
+import { airports } from "../../data/airports";
 
-export default function DepartureArrivalLocation({ departure, setDeparture, arrival, setArrival }) {
-
+export default function DepartureArrivalLocation({
+  departure,
+  setDeparture,
+  arrival,
+  setArrival,
+  errors = { departure: false, arrival: false },
+}) {
   const handleDepartureChange = (event, newValue) => {
     setDeparture(newValue);
   };
@@ -14,7 +19,7 @@ export default function DepartureArrivalLocation({ departure, setDeparture, arri
   };
 
   return (
-    <Box sx={{ display: 'flex', gap: 2 }}>
+    <Box sx={{ display: "flex", gap: 2 }}>
       {/* Departure Field */}
       <Autocomplete
         id="departure-select"
@@ -25,10 +30,7 @@ export default function DepartureArrivalLocation({ departure, setDeparture, arri
         autoHighlight
         getOptionLabel={(option) => option.label}
         renderOption={(props, option) => (
-          <Box
-            component="li"
-            {...props}
-          >
+          <Box component="li" {...props}>
             {option.name}
           </Box>
         )}
@@ -38,8 +40,12 @@ export default function DepartureArrivalLocation({ departure, setDeparture, arri
             label="Where from?"
             inputProps={{
               ...params.inputProps,
-              autoComplete: 'new-password', // disable autocomplete
+              autoComplete: "new-password", // disable autocomplete
             }}
+            error={errors.departure}
+            helperText={
+              errors.departure ? "Departure location is required" : ""
+            }
           />
         )}
       />
@@ -54,10 +60,7 @@ export default function DepartureArrivalLocation({ departure, setDeparture, arri
         autoHighlight
         getOptionLabel={(option) => option.label}
         renderOption={(props, option) => (
-          <Box
-            component="li"
-            {...props}
-          >
+          <Box component="li" {...props}>
             {option.name}
           </Box>
         )}
@@ -67,8 +70,10 @@ export default function DepartureArrivalLocation({ departure, setDeparture, arri
             label="Where to?"
             inputProps={{
               ...params.inputProps,
-              autoComplete: 'new-password', // disable autocomplete
+              autoComplete: "new-password", // disable autocomplete
             }}
+            error={errors.arrival}
+            helperText={errors.arrival ? "Arrival location is required" : ""}
           />
         )}
       />

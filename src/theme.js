@@ -1,16 +1,17 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#202124"
+      main: "#202124",
+      blue: "#0160EF",
     },
     secondary: {
-      main: "#ffffff"
+      main: "#ffffff",
     },
     btnColor: {
-      main: "#1976d2"
-    }
+      main: "#1976d2",
+    },
   },
   typography: {
     // "Google Sans" is not free to use
@@ -20,9 +21,11 @@ const theme = createTheme({
     },
     h2: {
       fontSize: "1.25rem",
-      fontWeight: "500"
-    }
-  }
-})
+      fontWeight: "500",
+    },
+    fontFamily:
+      '"Google Sans Display", "Roboto", "Helvetica", "Arial", sans-serif',
+  },
+});
 
 export default theme;

@@ -18,15 +18,9 @@ import TimelineOppositeContent, {
   timelineOppositeContentClasses,
 } from "@mui/lab/TimelineOppositeContent";
 
-function FlightsResults({ flights }) {
+function FlightsResults({ flights, loading }) {
   return (
     <div>
-      {!flights ? (
-        <Typography variant="subtitle2" sx={{ mb: 4 }}>
-          No flights or API free limit exceeded
-        </Typography>
-      ) : null}
-
       <Typography variant="h6" sx={{ mt: 10 }}>
         Top flights
       </Typography>
@@ -34,9 +28,6 @@ function FlightsResults({ flights }) {
         Ranked based on price and convenience. Prices include required taxes +
         fees for 1 adult. Optional charges and bag fees may apply. Passenger
         assistance info.
-      </Typography>
-      <Typography variant="subtitle2" sx={{ mb: 4 }}>
-        No flights or API free limit exceeded!
       </Typography>
       <Paper>
         {flights.map((flight) => {

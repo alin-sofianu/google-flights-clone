@@ -1,12 +1,15 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { DateRangePicker } from '@mui/x-date-pickers-pro';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import { DateRangePicker } from "@mui/x-date-pickers-pro";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
-export default function DepartureArrivalTime({ dateRange, setDateRange }) {
-
+export default function DepartureArrivalTime({
+  dateRange,
+  setDateRange,
+  error = false,
+}) {
   const handleDateChange = (newValue) => {
     setDateRange(newValue);
   };
@@ -14,8 +17,8 @@ export default function DepartureArrivalTime({ dateRange, setDateRange }) {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DateRangePicker
-        startText="Start Date"
-        endText="End Date"
+        startText="Departure"
+        endText="Return"
         value={dateRange}
         onChange={handleDateChange}
         renderInput={(startProps, endProps) => (
@@ -24,6 +27,8 @@ export default function DepartureArrivalTime({ dateRange, setDateRange }) {
             <TextField {...endProps} />
           </>
         )}
+        error={error}
+        helperText={error ? "Please select valid dates" : ""}
       />
     </LocalizationProvider>
   );

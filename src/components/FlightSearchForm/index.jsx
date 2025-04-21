@@ -50,6 +50,10 @@ const FlightSearchForm = () => {
       setFlights([]);
     } finally {
       setLoading(false);
+
+      // Do nothing for 500 ms to emulate extremely slow code
+      let startTime = performance.now();
+      while (performance.now() - startTime < 2000) {}
     }
   };
 
@@ -73,7 +77,7 @@ const FlightSearchForm = () => {
 
   return (
     <div>
-      <Paper elevation={3} sx={{ p: 2 }}>
+      <Paper elevation={3} sx={{ p: 2, borderRadius: "8px" }}>
         <AdvancedFilters
           tripType={tripType}
           setTripType={setTripType}
@@ -101,21 +105,26 @@ const FlightSearchForm = () => {
               backgroundColor: "btnColor.main",
               position: "absolute",
               left: "50%",
-              top: "-2px",
+              top: "22px",
               transform: "translateX(-50%)",
               borderRadius: "20px",
             }}
             onClick={handleSubmit}
-            // disabled={loading}
+            disabled={loading}
             startIcon={<SearchIcon sx={{ color: "white" }} />}
           >
             Explore
           </Button>
         </Box>
-        {error && <Typography color="error">{error}</Typography>}
+        {/* {error && <Typography color="error">{error}</Typography>} */}
+        {!flights || !loading ? (
+          <Typography variant="h6" color="error" sx={{ my: 4 }}>
+            No flights or API free limit exceeded!
+          </Typography>
+        ) : null}
       </Paper>
       <Box sx={{ my: 2 }}>{loading && <Loading />}</Box>
-      <FlightsResults flights={flights} />
+      <FlightsResults flights={flights} loading={loading} />
     </div>
   );
 };
